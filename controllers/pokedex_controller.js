@@ -1,4 +1,4 @@
-const pokedex = require("../pokemon/pokedex.json")
+const pokedex = require("../pokedex.json")
 
 
 function get_all_pokemons(req,res){
