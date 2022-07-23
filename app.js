@@ -5,7 +5,26 @@ const pokedex = require("./pokemon/pokedex.json")
 
 
 app.get("/pokedex", (req,res)=>{
-    res.send("pokedex")
+    const filters = req.query
+    const filteredValues = pokedex.filter(pokemon => {
+        let isValid = true
+        for (key in filters){
+            let field = pokemon[key]
+            if (typeof field === String){
+                isValid = isValid && field == filters[key]
+            }
+            // console.log(key, pokemon[key], filters[key])
+        }
+        return isValid
+    })
+    
+    res.status(200).json(filteredValues)
+})
+
+app.get("/pokedex/id/:id", (req,res)=>{
+    const id = parseInt(req.params.id)
+    const pokemon = pokedex.find(pokemon => pokemon.id === id)
+    res.status(200).json(pokemon)
 })
 
 
