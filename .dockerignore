@@ -1,0 +1,4 @@
+app/node_modules/
+app/.DS_Store
+app/controllers/.DS_Store
+.git/

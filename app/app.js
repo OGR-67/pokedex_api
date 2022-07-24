@@ -11,7 +11,7 @@ app.get("/pokedex/id/:id", dex_controller.get_poke_by_id)
 app.get("/pokedex/filter/", dex_controller.pokedex_filter)
 
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 app.listen(PORT, ()=>{
     console.log(`App listening on port ${PORT}`)
 })
